@@ -1,0 +1,91 @@
+{
+  "name": "happyfeet",
+  "version": "1.0.0",
+  "description": "Ecommerce website for shoes",
+  "main": "index.js",
+  "scripts": {
+    "start": "run-p start:dev start:api",
+    "start:dev": "webpack-dev-server --config webpack.config.dev.js --port 3000",
+    "prestart:api": "node tools/createMockDb.js",
+    "start:api": "node tools/apiServer.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cover": "jest --cover",
+    "lint": "eslint \"src/**/*.js\"",
+    "clean:build": "rimraf ./build && mkdir build",
+    "prebuild": "run-p clean:build test",
+    "build": "webpack --config webpack.config.prod.js",
+    "postbuild": "run-p start:api serve:build",
+    "serve:build": "http-server ./build"
+  },
+  "author": "Uwem Akan Nkereuwem",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "4.5.0",
+    "immer": "7.0.1",
+    "prop-types": "15.7.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-redux": "7.2.0",
+    "react-router-dom": "5.2.0",
+    "react-toastify": "6.0.5",
+    "redux": "4.0.5",
+    "redux-immutable-state-invariant": "2.1.0",
+    "redux-thunk": "2.3.0",
+    "reselect": "4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.10.2",
+    "@testing-library/react": "10.2.1",
+    "@types/jest": "26.0.4",
+    "babel-eslint": "10.1.0",
+    "babel-loader": "8.1.0",
+    "babel-preset-react-app": "9.1.2",
+    "css-loader": "3.6.0",
+    "cssnano": "4.1.10",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-loader": "4.0.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "fetch-mock": "9.10.1",
+    "html-webpack-plugin": "4.3.0",
+    "http-server": "0.12.3",
+    "jest": "26.0.1",
+    "jsdom": "16.3.0",
+    "json-server": "0.16.1",
+    "mini-css-extract-plugin": "0.9.0",
+    "node-fetch": "2.6.0",
+    "npm-run-all": "4.1.5",
+    "postcss-loader": "3.0.0",
+    "react-test-renderer": "16.13.1",
+    "redux-mock-store": "1.5.4",
+    "rimraf": "3.0.2",
+    "style-loader": "1.2.1",
+    "webpack": "4.43.0",
+    "webpack-bundle-analyzer": "3.8.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.11.0"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UWEMAKAN/HappyFeet.git"
+  },
+  "keywords": [
+    "Happy",
+    "Feet",
+    "Shoes",
+    "Ecommerce"
+  ],
+  "bugs": {
+    "url": "https://github.com/UWEMAKAN/HappyFeet/issues"
+  },
+  "homepage": "https://github.com/UWEMAKAN/HappyFeet#readme"
+}
