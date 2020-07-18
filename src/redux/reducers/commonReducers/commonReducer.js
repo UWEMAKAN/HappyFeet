@@ -7,6 +7,8 @@ export const actionTypeEndsInSuccess = (type) => (
 
 const apiCallStatusReducer = (state = initialState.apiCallsInProgress, action) => {
   if (action.type === types.API_CALL_BEGIN) {
+    // eslint-disable-next-line no-console
+    console.log(action.type);
     return state + 1;
   }
   if (action.type === types.API_CALL_ERROR

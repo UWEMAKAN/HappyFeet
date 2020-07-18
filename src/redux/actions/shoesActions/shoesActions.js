@@ -1,5 +1,5 @@
 import * as types from '../../constants/shoesConstants';
-import shoesApi from '../../../api/shoesApi';
+import * as shoesApi from '../../../api/shoesApi';
 import { apiCallBegin, apiCallError } from '../commonActions/apiStatusActions';
 
 export const loadShoesSuccess = (shoes) => (
@@ -8,6 +8,7 @@ export const loadShoesSuccess = (shoes) => (
 
 export const loadShoes = () => (dispatch) => {
   dispatch(apiCallBegin());
+  console.log('apiCallBegins');
   return shoesApi.getShoes()
     .then((shoes) => {
       dispatch(loadShoesSuccess(shoes));

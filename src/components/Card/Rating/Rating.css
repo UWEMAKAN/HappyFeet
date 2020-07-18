@@ -1,0 +1,11 @@
+.Rating {
+  align-self: flex-start;
+  padding: .5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  background-color: #209CEE;
+  color: #EDEDED;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}

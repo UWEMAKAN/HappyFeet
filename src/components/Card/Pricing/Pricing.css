@@ -1,0 +1,19 @@
+.Pricing {
+  width: 100%;
+  align-self: stretch;
+  display: flex;
+}
+
+.Pricing span:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.Pricing span:last-child {
+  color: #209CEE;
+}
+
+.Pricing span:nth-child(2) {
+  text-decoration: line-through;
+  color: #aaa;
+}
+

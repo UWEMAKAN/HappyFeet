@@ -43,26 +43,7 @@ server.use((_req, _res, next) => {
   setTimeout(next, 2000);
 });
 
-// Declaring custom routes below. Add custom routes before JSON Server router
-
-// Add createdAt to all POSTS
-// server.use((req, _res, next) => {
-//   if (req.method === 'POST') {
-//     req.body.createdAt = Date.now();
-//   }
-//   // Continue to JSON Server router
-//   next();
-// });
-
-// server.post('/courses/', (req, res, next) => {
-//   const error = validateCourse(req.body);
-//   if (error) {
-//     res.status(400).send(error);
-//   } else {
-//     req.body.slug = createSlug(req.body.title); // Generate a slug for new courses.
-//     next();
-//   }
-// });
+server.use(jsonServer.defaults(['./public']));
 
 // Use default router
 server.use(router);

@@ -1,0 +1,7 @@
+.HomePage {
+  display: grid;
+  column-gap: .5rem;
+  grid-template-columns: 1fr 3fr;
+  font-size: 1.6rem;
+  background-color: #ededed;
+}
