@@ -1,0 +1,33 @@
+.Filters {
+  display: flex;
+  flex-direction: column;
+}
+
+.Filters h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.Filters h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.Filter {
+  padding: 2rem 2rem;
+}
+
+@media screen and (max-width: 900px) {
+  .Filters h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .Filter {
+    padding: 2rem 1rem;
+  }
+}

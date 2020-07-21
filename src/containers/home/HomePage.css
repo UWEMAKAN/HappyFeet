@@ -3,5 +3,24 @@
   column-gap: .5rem;
   grid-template-columns: 1fr 3fr;
   font-size: 1.6rem;
-  background-color: #ededed;
+  background-color: #fff;
+  border: 1px solid #dedede;
+}
+
+.HomePage .MainArea {
+  border-left: 1px solid #dedede;
+}
+
+@media screen and (max-width: 900px) {
+  .HomePage {
+    column-gap: 0rem;
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .HomePage {
+    grid-template-columns: 1fr;
+    border: none;
+  }
 }

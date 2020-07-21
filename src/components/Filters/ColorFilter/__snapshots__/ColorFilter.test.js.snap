@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorFilter Component should render ColorFilter Component 1`] = `ShallowWrapper {}`;

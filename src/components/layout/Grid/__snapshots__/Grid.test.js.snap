@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid Component should render NoResultsFound when eventFired is false and shoes.length is 0 1`] = `ShallowWrapper {}`;
+
+exports[`Grid Component should render Spinner when eventFired is true 1`] = `ShallowWrapper {}`;
+
+exports[`Grid Component should render a list of Cards when eventFired is false and shoes.length is > 0 1`] = `ShallowWrapper {}`;

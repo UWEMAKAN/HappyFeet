@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 import * as shoesActions from '../../redux/actions/shoesActions/shoesActions';
 import Grid from '../layout/Grid/Grid';
 import Spinner from '../Common/Spinner/Spinner';
+import './Shoes.css';
 
 class Shoes extends Component {
   componentDidMount() {

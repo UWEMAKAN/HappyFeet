@@ -8,7 +8,6 @@ export const loadShoesSuccess = (shoes) => (
 
 export const loadShoes = () => (dispatch) => {
   dispatch(apiCallBegin());
-  console.log('apiCallBegins');
   return shoesApi.getShoes()
     .then((shoes) => {
       dispatch(loadShoesSuccess(shoes));

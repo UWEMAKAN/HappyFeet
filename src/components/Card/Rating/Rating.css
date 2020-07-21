@@ -4,8 +4,15 @@
   font-size: 1.4rem;
   font-weight: 700;
   background-color: #209CEE;
-  color: #EDEDED;
+  color: #fff;
   display: flex;
   flex-direction: row;
   margin-bottom: 1rem;
+  justify-content: center;
 }
+
+.Rating span {
+  font-size: 1.3rem;
+  margin-right: .2rem;
+}
+

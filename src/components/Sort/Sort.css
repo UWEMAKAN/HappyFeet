@@ -1,0 +1,40 @@
+.Sort {
+  padding: 2rem 0 0 2rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #dedede;
+}
+
+.Sort h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.Sort button {
+  outline: none;
+  background-color: #fff;
+  margin-left: 3rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+  border: 1px solid transparent;
+  padding: 1rem;
+}
+
+.Sort button:hover,
+.Sort button:active {
+  background-color: #dedede;
+  border: 1px solid #adadad;
+}
+
+@media screen and (max-width: 900px) {
+  .Sort button {
+    margin-left: 1rem;
+    padding: .5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Sort {
+    border: none;
+  }
+}

@@ -1,0 +1,29 @@
+.FilterBrand {
+  padding: .5rem 0;
+  font-size: 1.6rem;
+  color: #232323;
+  display: flex;
+  align-content: center;
+}
+
+.FilterBrand span {
+  margin-left: .5rem;
+  font-size: 1.4rem;
+}
+
+.BrandFilter input,
+.BrandFilter input:focus {
+  outline: none;
+  border: 1px solid rgba(0,0,0,.4);
+  padding: .3rem;
+}
+
+@media screen and (max-width: 900px) {
+  .BrandFilter input,
+  .BrandFilter input:focus {
+    outline: none;
+    border: 1px solid rgba(0,0,0,.4);
+    padding: .2rem;
+    width: 15rem;
+  }
+}

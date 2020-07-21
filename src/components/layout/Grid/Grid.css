@@ -1,6 +1,35 @@
 .Grid {
+  grid-column: 1 / 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: #EDEDED;
-  box-shadow: -2px 1px 1px rgba(0,0,0,.1);
+  row-gap: 5rem;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 900px) {
+  .Grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 9rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Grid {
+    row-gap: 6rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .Grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 4rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .Grid {
+    border: none;
+    grid-template-rows: min-content;
+    row-gap: 2rem;
+  }
 }

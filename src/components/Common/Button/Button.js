@@ -2,16 +2,16 @@ import React from 'react';
 import propTypes from 'prop-types';
 import './Button.css';
 
-const Button = ({ styles, text }) => (
+const Button = ({ styles, text, clickHandler }) => (
   <div style={styles} className="ButtonWrapper">
-    <button className="Button" type="button">
+    <button onClick={clickHandler} className="Button" type="button">
       {text}
     </button>
   </div>
 );
 
 Button.propTypes = {
-  //   // onClick: propTypes.func.isRequired
+  clickHandler: propTypes.func.isRequired,
   styles: propTypes.instanceOf(Object).isRequired,
   text: propTypes.string.isRequired
 };

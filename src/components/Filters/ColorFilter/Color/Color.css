@@ -1,0 +1,21 @@
+.ColorItem {
+  display: flex;
+  align-items: center;
+}
+
+.ColorItem input {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.Color {
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 2rem;
+  margin: 0 1.5rem;
+  border: .1px solid rgba(0,0,0,.4);
+}
+
+.ColorItem:not(:last-child) {
+  margin-bottom: 1.5rem;
+}

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating Component should render Rating Component 1`] = `ShallowWrapper {}`;

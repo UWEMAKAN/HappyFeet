@@ -13,5 +13,55 @@ html {
 
 body {
   padding: 8rem 12rem;
-  background-color: #EDEDED;
+  background-color: #fff;
 }
+
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 50%;
+  }
+  body {
+    padding: 6rem 9rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 37.5%;
+  }
+  body {
+    padding: 4rem 6rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    padding: 2rem 4rem;
+  }
+}
+
+/* @media screen and (min-width: 1800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  body {
+    padding: 16rem 80rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    padding: 16rem 30rem;
+  }
+} */
