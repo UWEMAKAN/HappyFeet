@@ -6,7 +6,9 @@ const renderButton = (args) => {
   const defaultProps = {
     clickHandler: jest.fn(),
     styles: {},
-    text: ''
+    text: '',
+    name: '',
+    link: ''
   };
   const props = { ...defaultProps, ...args };
   // eslint-disable-next-line react/jsx-props-no-spreading
@@ -16,8 +18,12 @@ const renderButton = (args) => {
 describe('Button Component', () => {
   test('renders button component', () => {
     const text = 'Button';
+    const name = '1';
+    const link = '/';
     const clickHandler = jest.fn();
-    const wrapper = renderButton({ text, clickHandler });
+    const wrapper = renderButton({
+      text, clickHandler, name, link
+    });
 
     wrapper.find('button').simulate('click');
 

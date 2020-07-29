@@ -1,6 +1,11 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import './NoResultsFound.css';
 
-const NoResultsFound = () => <div className="NoResultsFound">No Results Found</div>;
+const NoResultsFound = ({ message }) => <div className="NoResultsFound">{message}</div>;
+
+NoResultsFound.propTypes = {
+  message: propTypes.string.isRequired
+};
 
 export default NoResultsFound;

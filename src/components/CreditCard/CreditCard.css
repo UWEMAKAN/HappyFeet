@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+.CreditCard {
+  display: flex;
+  font-size: 1.6rem;
+}
+
+.CreditCard .Form {
+  margin-left: 15rem;
+}
+
+.CreditCard .Form .CardInfo:first-child {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.CreditCard .Form .CardInfo span {
+  margin-bottom: 1rem;
+}
+
+.CreditCard .Form .CardInfo input {
+  width: 25rem;
+  padding: 0.5rem;
+  font-size: 2rem;
+}
+
+.CreditCard .Form .CVV_Expiry {
+  display: flex;
+}
+
+.CreditCard .Form .CVV {
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.CreditCard .Form .CVV input {
+  width: 7rem;
+}
+
+.CreditCard .Form .Expiry {
+  display: flex;
+  flex-direction: column;
+}
+
+.CreditCard .Form .Expiry input {
+  width: 5rem;
+}
+
+.CreditCard .Form .Expiry input:first-child {
+  margin-right: .5rem;
+}
+
+.CreditCard .Form .Expiry input:last-child {
+  margin-left: .5rem;
+}
+
+.CreditCard .Form input:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.credit-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 50rem;
+  height: 31.25rem;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+
+  color: white;
+
+  background-image: linear-gradient(25deg, #0f509e, #1399cd);
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+}
+
+.credit-card__number {
+  display: flex;
+  justify-content: center;
+
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 4.5rem;
+}
+
+.credit-card__info {
+  display: flex;
+  justify-content: space-between;
+
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 2.5rem;
+}
+
+.credit-card__info_label {
+  font-size: 2rem;
+}
+
+.credit-card__info_name {
+  width: 35rem;
+}
+
+.credit-card__info_expiry {
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.credit-card__info_cvv {
+  width: 10rem;
+}
+
+.credit-card__info_name div:last-child,
+.credit-card__info_cvv div:last-child,
+.credit-card__info_expiry div:last-child {
+  height: 2.5rem;
+}

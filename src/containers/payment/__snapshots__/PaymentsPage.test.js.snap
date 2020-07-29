@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaymentsPage Component should render NoResults Found when there is no shoe to render 1`] = `ShallowWrapper {}`;
+
+exports[`PaymentsPage Component should render PaymentsPage Component 1`] = `ShallowWrapper {}`;

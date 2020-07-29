@@ -9,6 +9,7 @@ module.exports = {
       price: 1295,
       discount: 35,
       rating: 4.3,
+      seller: 'RetailNet'
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ module.exports = {
       price: 1325,
       discount: 35,
       rating: 4.3,
+      seller: 'RetailNet'
     },
     {
       id: 3,
@@ -29,6 +31,7 @@ module.exports = {
       price: 1450,
       discount: 40,
       rating: 4.6,
+      seller: 'RetailNet'
     },
     {
       id: 4,
@@ -39,6 +42,7 @@ module.exports = {
       price: 1375,
       discount: 40,
       rating: 4.3,
+      seller: 'RetailNet'
     },
     {
       id: 5,
@@ -49,6 +53,7 @@ module.exports = {
       price: 2425,
       discount: 30,
       rating: 4.3,
+      seller: 'RetailNet'
     },
     {
       id: 6,
@@ -59,6 +64,7 @@ module.exports = {
       price: 3420,
       discount: 35,
       rating: 4.3,
+      seller: 'RetailNet'
     },
   ]
 };

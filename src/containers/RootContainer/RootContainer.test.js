@@ -1,21 +1,22 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
-// import HomePage from './HomePage';
+// import { RootContainer } from './RootContainer';
 // import { shoes } from '../../../tools/mockData';
 
-// const renderHomePage = (args) => {
+// const renderRootContainer = (args) => {
 //   const defaultProps = {
 //     shoes,
-//     buyShoe: jest.fn()
+//     loading: false,
+//     actions: {}
 //   };
 //   const props = { ...defaultProps, ...args };
 //   // eslint-disable-next-line react/jsx-props-no-spreading
-//   return shallow(<HomePage {...props} />);
+//   return shallow(<RootContainer {...props} />);
 // };
 
-// describe('HomePage Component', () => {
-//   test('should render HomePage Component', () => {
-//     const wrapper = renderHomePage();
+// describe('RootContainer Component', () => {
+//   test('should render RootContainer Component', () => {
+//     const wrapper = renderRootContainer();
 //     expect.assertions(1);
 //     expect(wrapper).toMatchSnapshot();
 //   });

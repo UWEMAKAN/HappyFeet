@@ -3,10 +3,10 @@ import { shallow } from 'enzyme';
 import ColorFilter from './ColorFilter';
 
 const renderColorFilter = (args) => {
-  const defaultHandler = {
+  const defaultProps = {
     checkedHandler: jest.fn()
   };
-  const props = { ...defaultHandler, ...args };
+  const props = { ...defaultProps, ...args };
   return shallow(<ColorFilter checkedHandler={props.checkedHandler} />);
 };
 

@@ -1,0 +1,12 @@
+.MyShoesPage {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+}
+
+.MyShoesPage h2 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #2c9cee;
+  margin-bottom: 4rem;
+}

@@ -8,6 +8,7 @@ import Spinner from '../../Common/Spinner/Spinner';
 const Grid = ({ shoes, eventFired, clickHandler }) => {
   const shoesCards = shoes.map((shoe) => (
     <Card
+      id={`${shoe.id}`}
       key={shoe.id}
       image={shoe.image}
       title={shoe.title}
@@ -22,7 +23,7 @@ const Grid = ({ shoes, eventFired, clickHandler }) => {
   if (eventFired) {
     returnValue = <Spinner />;
   } else {
-    returnValue = shoes.length ? <div className="Grid">{shoesCards}</div> : <NoResultsFound />;
+    returnValue = shoes.length ? <div className="Grid">{shoesCards}</div> : <NoResultsFound message="No Results Found" />;
   }
 
   return (

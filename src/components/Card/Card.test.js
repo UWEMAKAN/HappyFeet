@@ -4,6 +4,7 @@ import Card from './Card';
 
 const renderCard = (args) => {
   const defaultProps = {
+    id: '',
     title: '',
     image: '',
     price: 0,
@@ -17,6 +18,7 @@ const renderCard = (args) => {
 };
 
 describe('Card Component', () => {
+  const id = '1';
   const title = 'Black Leather Shoes';
   const image = 'http://localhost:3001/assets/images/image.jpg';
   const price = 4000;
@@ -26,7 +28,7 @@ describe('Card Component', () => {
 
   test('should render Card', () => {
     const wrapper = renderCard({
-      title, image, price, discount, rating, clickHandler
+      id, title, image, price, discount, rating, clickHandler
     });
     expect.assertions(2);
     expect(wrapper.getElements()[0].props.children.length).toBe(5);

@@ -1,0 +1,44 @@
+.MyShoeCard {
+  display: flex;
+  height: 20rem;
+  width: 100%;
+  padding: 2rem 10rem;
+  border: 1px solid rgba(0,0,0,.2);
+}
+
+.MyShoeCard:not(:last-child) {
+  margin-bottom: 5rem;
+}
+
+.MyShoeCard img {
+  width: 16rem;
+}
+
+.MyShoeCard .Description {
+  align-self: center;
+  display: flex;
+  margin-left: 18rem;
+}
+
+.MyShoeCard .Description div:first-child {
+  display: flex;
+  flex-direction: column;
+  width: 37rem;
+}
+
+.MyShoeCard .Description span:first-child {
+  font-size: 2rem;
+}
+
+.MyShoeCard .Description span:not(:first-child) {
+  color: #887d7d;
+}
+
+.MyShoeCard .Description span:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.MyShoeCard .Price {
+  width: 15rem;
+  font-size: 2rem;
+}

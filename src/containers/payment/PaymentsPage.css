@@ -1,0 +1,10 @@
+.PaymentsPage {
+  font-size: 1.6rem;
+}
+
+.PaymentsPage h2 {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #2c9cee;
+  margin-bottom: 4rem;
+}

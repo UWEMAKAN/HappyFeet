@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import * as shoesActions from '../../redux/actions/shoesActions/shoesActions';
 import Grid from '../../components/layout/Grid/Grid';
-import Spinner from '../../components/Common/Spinner/Spinner';
 import SideBar from '../../components/layout/SideBar/SideBar';
 import Sort from '../../components/Sort/Sort';
 import './HomePage.css';
@@ -33,20 +29,10 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    const { shoes, actions } = this.props;
-    if (!shoes.length) {
-      actions.loadShoes()
-        .then(() => {
-          this.setState((prevState) => ({
-            // eslint-disable-next-line react/destructuring-assignment
-            ...prevState, shoes: this.props.shoes, shoesLength: this.props.shoes.length
-          }));
-        })
-        .catch((err) => {
-          // eslint-disable-next-line no-alert
-          alert(`Loading courses failed ${err}`);
-        });
-    }
+    const { shoes } = this.props;
+    this.setState((prevState) => ({
+      ...prevState, shoes
+    }));
   }
 
   filterShoes = () => {
@@ -179,13 +165,17 @@ class HomePage extends Component {
     }));
   }
 
+  buyButtonHandler = (event) => {
+    const { buyShoe } = this.props;
+    const { name } = event.target;
+    const id = Number(name);
+    buyShoe(id);
+  }
+
   render() {
-    const { shoesLength, eventFired, sortBy } = this.state;
-    const { loading } = this.props;
+    const { eventFired, sortBy } = this.state;
     const shoes = sortBy ? this.shoes : this.filterShoes();
-    return !shoesLength || loading ? (
-      <Spinner />
-    ) : (
+    return (
       <div className="HomePage">
         <SideBar
           selectHandler={this.selectPriceHandler}
@@ -194,7 +184,7 @@ class HomePage extends Component {
         />
         <div className="MainArea">
           <Sort sortHandler={this.sortButtonsHandler} />
-          <Grid shoes={shoes} eventFired={eventFired} />
+          <Grid clickHandler={this.buyButtonHandler} shoes={shoes} eventFired={eventFired} />
         </div>
       </div>
     );
@@ -203,19 +193,7 @@ class HomePage extends Component {
 
 HomePage.propTypes = {
   shoes: propTypes.instanceOf(Array).isRequired,
-  actions: propTypes.instanceOf(Object).isRequired,
-  loading: propTypes.bool.isRequired
+  buyShoe: propTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  shoes: state.shoes,
-  loading: state.apiCallsInprogress > 0
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  actions: {
-    loadShoes: bindActionCreators(shoesActions.loadShoes, dispatch)
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default HomePage;
