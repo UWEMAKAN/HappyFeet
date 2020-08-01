@@ -1,12 +1,19 @@
 import React from 'react';
-// import fetchMock from 'fetch-mock';
+import fetchMock from 'fetch-mock';
 // import {
 //   cleanup, fireEvent, render, act
 // } from '@testing-library/react';
-import { shallow } from 'enzyme';
-// import { MemoryRouter } from 'react-router-dom';
+import { shallow, mount } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
 import RootContainer, { buyShoeHandler, myShoesHandler } from './RootContainer';
 import { shoes } from '../../../tools/mockData';
+
+const mockSetState = jest.fn();
+
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: (initial) => [initial, mockSetState]
+}));
 
 describe('RootContainer Component', () => {
   test('should render RootContainer Component', () => {
@@ -15,37 +22,20 @@ describe('RootContainer Component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  // describe('Test useEffect', () => {
-  //   afterEach(() => {
-  //     jest.useRealTimers();
-  //   });
+  describe('Test useEffect', () => {
+    test('should render RootContainer Component', () => {
+      fetchMock.mock(`${process.env.API_URL}/shoes/`, {
+        body: shoes,
+        headers: { 'content-type': 'application/json' }
+      });
+      mount(<MemoryRouter><RootContainer /></MemoryRouter>);
+    });
 
-  // //   test('should render RootContainer Component', async (done) => {
-  // //     fetchMock.mock('*', {
-  // //       body: shoes,
-  // //       headers: { 'content-type': 'application/json' }
-  // //     });
-  // //     await act(async () => {
-  // //       const container = mount(<MemoryRouter><RootContainer /></MemoryRouter>);
-  // //     });
-  // //     jest.useFakeTimers();
-  // //     jest.runAllImmediates();
-  // //   });
-  // });
-
-  // test('should render RootContainer Component', (done) => {
-  //   global.fetch = fetchMock.mock('*', {
-  //     body: shoes,
-  //     headers: { 'content-type': 'application/json' }
-  //   });
-  //   let container;
-  //   jest.useFakeTimers();
-  //   act(() => {
-  //     container = render(<MemoryRouter><RootContainer /></MemoryRouter>);
-  //   });
-  //   setImmediate(done);
-  //   jest.runAllImmediates();
-  // });
+    test('should render RootContainer Component', () => {
+      fetchMock.mock('*', { throws: Error('Network Connectivity Error') });
+      mount(<MemoryRouter><RootContainer /></MemoryRouter>);
+    });
+  });
 });
 
 describe('Testing Helpers', () => {

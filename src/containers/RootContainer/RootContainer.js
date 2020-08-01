@@ -27,8 +27,7 @@ const RootContainer = () => {
     if (!shoes.length) {
       getShoes()
         .then((fetchedShoes) => {
-          setImmediate(() => setShoes(fetchedShoes));
-          // setShoes(fetchedShoes);
+          setShoes(fetchedShoes);
         })
         .catch((err) => {
           // eslint-disable-next-line no-alert
