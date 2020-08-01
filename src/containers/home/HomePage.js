@@ -1,195 +1,98 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
 import Grid from '../../components/layout/Grid/Grid';
 import SideBar from '../../components/layout/SideBar/SideBar';
 import Sort from '../../components/Sort/Sort';
+import { sortShoes } from './utils';
 import './HomePage.css';
 
-class HomePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      shoes: [],
-      minPrice: null,
-      maxPrice: null,
-      shoesLength: null,
-      searchTerm: '',
-      colors: {
-        blue: false,
-        red: false,
-        white: false,
-        black: false,
-        green: false,
-        brown: false
-      },
-      eventFired: false,
-      sortBy: ''
-    };
-    this.shoes = [];
-  }
-
-  componentDidMount() {
-    const { shoes } = this.props;
-    this.setState((prevState) => ({
-      ...prevState, shoes
-    }));
-  }
-
-  filterShoes = () => {
-    const { shoes } = this.state;
-    let filteredShoes = this.filterByPrice(shoes);
-    filteredShoes = this.filterByBrand(filteredShoes);
-    filteredShoes = this.filterByColor(filteredShoes);
-    this.shoes = [...filteredShoes];
-    return filteredShoes;
-  }
-
-  filterByPrice = (shoes) => {
-    const { minPrice, maxPrice } = this.state;
-    if (minPrice && !maxPrice) {
-      return shoes.filter((shoe) => shoe.price > minPrice);
+export const selectPriceHandler = (
+  setEventFired, setSortBy, setMinPrice, setMaxPrice
+) => (event) => {
+  const priceSelector = event.target.name;
+  const price = Number(event.target.value);
+  setEventFired(true);
+  setSortBy('');
+  setTimeout(() => {
+    if (priceSelector === 'minPriceSelector') {
+      setMinPrice(price);
     }
-    if (!minPrice && maxPrice) {
-      return shoes.filter((shoe) => shoe.price < maxPrice);
+    if (priceSelector === 'maxPriceSelector') {
+      setMaxPrice(price);
     }
-    if (minPrice && maxPrice) {
-      if (maxPrice <= 4000) {
-        return shoes.filter((shoe) => shoe.price > minPrice && shoe.price < maxPrice);
-      }
-      return shoes.filter((shoe) => shoe.price > minPrice);
-    }
-    return shoes;
-  }
+    setEventFired(false);
+  }, 500);
+};
 
-  filterByBrand = (shoes) => {
-    const { searchTerm } = this.state;
-    return shoes.filter((shoe) => shoe.brand.toLowerCase().includes(searchTerm.toLowerCase()));
-  }
+export const searchBrandHandler = (setEventFired, setSortBy, setSearchTerm) => (event) => {
+  const search = event.target.value;
+  setEventFired(true);
+  setSortBy('');
+  setTimeout(() => {
+    setSearchTerm(search);
+    setEventFired(false);
+  }, 500);
+};
 
-  filterByColor = (shoes) => {
-    const { colors } = this.state;
-    const checkedColors = Object.keys(colors).filter((color) => colors[color] === true);
-    const filteredShoes = [];
-    const isAllColorsUnchecked = Object.values(colors).every((value) => value === false);
-    if (isAllColorsUnchecked) {
-      filteredShoes.push(...shoes);
+export const checkedColorsHandler = (setEventFired, setSortBy, setColors, colors) => (event) => {
+  const { name } = event.target;
+  setEventFired(true);
+  setSortBy('');
+  setTimeout(() => {
+    if (colors[name]) {
+      setColors({ ...colors, [name]: false });
     } else {
-      checkedColors.forEach((checkedColor) => {
-        const filtered = shoes.filter(
-          (shoe) => shoe.color.toLowerCase() === checkedColor.toLowerCase()
-        );
-        filteredShoes.push(...filtered);
-      });
+      setColors({ ...colors, [name]: true });
     }
-    return filteredShoes;
-  }
+    setEventFired(false);
+  }, 500);
+};
 
-  selectPriceHandler = (event) => {
-    const priceSelector = event.target.name;
-    const price = Number(event.target.value);
-    this.setState((prevState) => ({
-      ...prevState, eventFired: true, sortBy: ''
-    }));
-    setTimeout(() => {
-      if (priceSelector === 'minPriceSelector') {
-        this.setState((prevState) => ({
-          ...prevState,
-          minPrice: price,
-          eventFired: false
-        }));
-      } else if (priceSelector === 'maxPriceSelector') {
-        this.setState((prevState) => ({
-          ...prevState,
-          maxPrice: price,
-          eventFired: false
-        }));
-      }
-    }, 500);
+const HomePage = ({ shoes, buyShoe }) => {
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [eventFired, setEventFired] = useState(false);
+  const [sortBy, setSortBy] = useState('');
+  const [colors, setColors] = useState({
+    blue: false,
+    red: false,
+    white: false,
+    black: false,
+    green: false,
+    brown: false
+  });
+
+  const selectHandler = selectPriceHandler(setEventFired, setSortBy, setMinPrice, setMaxPrice);
+  const searchHandler = searchBrandHandler(setEventFired, setSortBy, setSearchTerm);
+  const checkedHandler = checkedColorsHandler(setEventFired, setSortBy, setColors, colors);
+
+  const sortButtonsHandler = (event) => {
+    const { name } = event.target;
+    setSortBy(name);
   };
 
-  searchBrandHandler = (event) => {
-    const searchTerm = event.target.value;
-    this.setState((prevState) => ({
-      ...prevState, eventFired: true, sortBy: ''
-    }));
-    setTimeout(() => {
-      this.setState((prevState) => ({
-        ...prevState, searchTerm, eventFired: false
-      }));
-    }, 500);
-  }
-
-  checkedColorsHandler = (event) => {
-    const { name } = event.target;
-    const { colors } = this.state;
-    this.setState((prevState) => ({
-      ...prevState, eventFired: true, sortBy: ''
-    }));
-    setTimeout(() => {
-      if (colors[name]) {
-        this.setState((prevState) => ({
-          ...prevState,
-          colors: { ...prevState.colors, [name]: false },
-          eventFired: false
-        }));
-      } else {
-        this.setState((prevState) => ({
-          ...prevState,
-          colors: { ...prevState.colors, [name]: true },
-          eventFired: false
-        }));
-      }
-    }, 500);
-  }
-
-  sortByPriceAscending = () => {
-    this.shoes.sort((a, b) => a.price - b.price);
-  }
-
-  sortByPriceDescending = () => {
-    this.shoes.sort((a, b) => b.price - a.price);
-  }
-
-  sortButtonsHandler = (event) => {
-    const { name } = event.target;
-    // eslint-disable-next-line no-console
-    console.log(name);
-    if (name === 'ascending') {
-      this.sortByPriceAscending();
-    }
-    if (name === 'descending') {
-      this.sortByPriceDescending();
-    }
-    this.setState((prevState) => ({
-      ...prevState, sortBy: name
-    }));
-  }
-
-  buyButtonHandler = (event) => {
-    const { buyShoe } = this.props;
+  const buyButtonHandler = (event) => {
     const { name } = event.target;
     const id = Number(name);
     buyShoe(id);
-  }
+  };
 
-  render() {
-    const { eventFired, sortBy } = this.state;
-    const shoes = sortBy ? this.shoes : this.filterShoes();
-    return (
-      <div className="HomePage">
-        <SideBar
-          selectHandler={this.selectPriceHandler}
-          searchHandler={this.searchBrandHandler}
-          checkedHandler={this.checkedColorsHandler}
-        />
-        <div className="MainArea">
-          <Sort sortHandler={this.sortButtonsHandler} />
-          <Grid clickHandler={this.buyButtonHandler} shoes={shoes} eventFired={eventFired} />
-        </div>
+  const shoesToRender = sortShoes(shoes, sortBy, minPrice, maxPrice, searchTerm, colors);
+  return (
+    <div className="HomePage">
+      <SideBar
+        selectHandler={selectHandler}
+        searchHandler={searchHandler}
+        checkedHandler={checkedHandler}
+      />
+      <div className="MainArea">
+        <Sort sortHandler={sortButtonsHandler} />
+        <Grid clickHandler={buyButtonHandler} shoes={shoesToRender} eventFired={eventFired} />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 HomePage.propTypes = {
   shoes: propTypes.instanceOf(Array).isRequired,
